@@ -26,8 +26,15 @@ public class Estoque {
         }
     }
 
-    public void exibirProduto() {
+    public String exibirProduto(int id) {
+        String produtoString = "";
+        for (Produto produto : produtos) {
+            if (produto.getId() == id) {
+                produtoString = produto.toString();
+            }
+        }
 
+        return produtoString;
     }
 
     public int qntProdutosEstoque() {
