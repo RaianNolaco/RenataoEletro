@@ -2,17 +2,19 @@ import java.util.ArrayList;
 
 public class Estoque {
 
-    private ArrayList<Produto> produtos;
+    private ArrayList<Produto> produtos = new ArrayList<Produto>();
 
-    public void adicionarEstoque(Produto produto) {
+    public String adicionarEstoque(Produto produto) {
         this.produtos.add(produto);
+
+        return "O PRODUTO: " + produto.getNome() + " FOI ADICIONADO\nID:" + produto.getId();
     }
 
     public String listarProdutos() {
         String listaProdutos = "";
 
         for (Produto produto : produtos) {
-            listaProdutos += produto.toString();
+            listaProdutos += produto.toString() + "\n";
         }
 
         return listaProdutos;
@@ -33,8 +35,29 @@ public class Estoque {
                 produtoString = produto.toString();
             }
         }
+        if(produtoString.isBlank() || produtoString.isEmpty())
+            return "PRODUTO NÃO ENCONTRADO";
 
         return produtoString;
+    }
+
+    public String removerEstoque(int id){
+
+        Produto remover = null;
+        for (Produto prod : produtos) {
+            if(prod.getId() == id){
+                remover = prod;
+                break;
+            }
+        }
+
+        if(remover.equals(null))
+            return "PRODUTO NÃO ENCONTRADO";
+        
+        String nome = remover.getNome();
+
+        produtos.remove(remover);
+        return  "O PRODUTO: " + nome + " FOI REMOVIDO\nID:" + id;
     }
 
     public int qntProdutosEstoque() {

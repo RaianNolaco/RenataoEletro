@@ -7,6 +7,9 @@ public class Produto {
     private double preco;
     private int qntMinProdutos;
     private int qtd;
+    private static int calcId; 
+
+    public Produto() {}
 
     public Produto(String nome, String modelo, String marca, double preco, int qntMinProdutos) {
         this.nome = nome;
@@ -15,6 +18,9 @@ public class Produto {
         this.preco = preco;
         this.qntMinProdutos = qntMinProdutos;
         this.qtd = 0;
+
+        calcId++;
+        id = calcId;
     }
 
     public Produto(String nome, String modelo, String marca, double preco, int qntMinProdutos, int qtd) {
@@ -24,6 +30,10 @@ public class Produto {
         this.preco = preco;
         this.qntMinProdutos = qntMinProdutos;
         this.qtd = qtd;
+
+        
+        calcId++;
+        id = calcId;
     }
 
     public int getId() {
