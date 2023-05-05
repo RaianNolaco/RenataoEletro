@@ -15,6 +15,7 @@ public class Main {
                     Produto produto = cadastrarProduto();
                     String responseAdd = estoque.adicionarEstoque(produto);
                     System.out.println(responseAdd);
+                    Geral.continuar();
                     break;
   
                 case "2":
@@ -22,6 +23,7 @@ public class Main {
                     int idConsulta = sc.nextInt();
                     String responseBuscar = estoque.exibirProduto(idConsulta);
                     System.out.println(responseBuscar);
+                    Geral.continuar();
                     break;
  
                 case "3":
@@ -29,21 +31,25 @@ public class Main {
                     int idRemover = sc.nextInt();
                     String responseRemover = estoque.removerEstoque(idRemover);
                     System.out.println(responseRemover);
+                    Geral.continuar();
                     break;
  
                 case "4":
                     String responseBuscarTodos = estoque.listarProdutos();
                     System.out.println(responseBuscarTodos);
+                    Geral.continuar();
                     break;
  
                 case "5":
                     int responseProdEstoque = estoque.qntProdutosEstoque();
                     System.out.println("EXISTEM: " + responseProdEstoque + " EM ESTOQUE");
+                    Geral.continuar();
                     break;
  
                 case "6":
                     double responseCapitalEstoque = estoque.capitalTotalEstoque();
                     System.out.println("O VALOR DE PRODUTOS EM ESTOQUE É DE: R$"+ responseCapitalEstoque);
+                    Geral.continuar();
                     break;
 
                 case "7":
@@ -62,7 +68,7 @@ public class Main {
     }
 
     public static String menu() {
-        continuar();
+        Geral.limparTela();
         System.out.println("\n");
         System.out.println("+========================================+");
         System.out.println("| 1 - Adicionar produto                  |");
@@ -126,12 +132,5 @@ public class Main {
         Produto produto = new Produto(nome, modelo, marca, preco, qntMin, qntAtt); 
         
         return produto;
-    }
-
-    public static void continuar(){
-        String input = sc.nextLine();
-        while (!input.isEmpty()) {
-            input = sc.nextLine();
-        }
     }
 }

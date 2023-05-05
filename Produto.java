@@ -80,6 +80,7 @@ public class Produto {
     public String toString() {
         String stringProduto = "";
 
+        stringProduto += "\nID: " + getId();
         stringProduto += "\nNome: " + getNome();
         stringProduto += "\nModelo: " + getModelo();
         stringProduto += "\nMarca: " + getMarca();

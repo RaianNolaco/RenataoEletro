@@ -35,7 +35,7 @@ public class Estoque {
                 produtoString = produto.toString();
             }
         }
-        if(produtoString.isBlank() || produtoString.isEmpty())
+        if(produtoString.isEmpty())
             return "PRODUTO NÃO ENCONTRADO";
 
         return produtoString;
@@ -78,4 +78,6 @@ public class Estoque {
 
         return valorEstoque;
     }
+
+
 }
