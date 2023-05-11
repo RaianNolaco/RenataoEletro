@@ -4,67 +4,78 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Estoque estoque = new Estoque();
+        try {
+            Estoque estoque = new Estoque();
 
-        boolean sair = false;
-        while (!sair) {
-            String resp = menu();
+            boolean sair = false;
+            while (!sair) {
+                String resp = menu();
 
-            switch (resp) {
-                case "1":
-                    Produto produto = cadastrarProduto();
-                    String responseAdd = estoque.adicionarEstoque(produto);
-                    System.out.println(responseAdd);
-                    Geral.continuar();
-                    break;
-  
-                case "2":
-                    System.out.print("Digite o ID do produto que deseja consultar: ");
-                    int idConsulta = sc.nextInt();
-                    String responseBuscar = estoque.exibirProduto(idConsulta);
-                    System.out.println(responseBuscar);
-                    Geral.continuar();
-                    break;
- 
-                case "3":
-                    System.out.print("Digite o ID do produto que deseja remover: ");
-                    int idRemover = sc.nextInt();
-                    String responseRemover = estoque.removerEstoque(idRemover);
-                    System.out.println(responseRemover);
-                    Geral.continuar();
-                    break;
- 
-                case "4":
-                    String responseBuscarTodos = estoque.listarProdutos();
-                    System.out.println(responseBuscarTodos);
-                    Geral.continuar();
-                    break;
- 
-                case "5":
-                    int responseProdEstoque = estoque.qntProdutosEstoque();
-                    System.out.println("EXISTEM: " + responseProdEstoque + " EM ESTOQUE");
-                    Geral.continuar();
-                    break;
- 
-                case "6":
-                    double responseCapitalEstoque = estoque.capitalTotalEstoque();
-                    System.out.println("O VALOR DE PRODUTOS EM ESTOQUE É DE: R$"+ responseCapitalEstoque);
-                    Geral.continuar();
-                    break;
+                switch (resp){
+                    case "1":
+                        Produto produto = cadastrarProduto();
+                        String responseAdd = estoque.adicionarEstoque(produto);
+                        System.out.println(responseAdd);
+                        Geral.continuar();
+                        break;
 
-                case "7":
-                        System.out.println("DESLIGANDO SISTEMA");
-                        sair = true;
-                    break;
- 
- 
-                default:
-                    System.out.println("ERRO: OPÇÃO INVALIDA");
-                    break;
+                    case "2":
+                        System.out.print("Digite o ID do produto que deseja consultar: ");
+                        int idConsulta = sc.nextInt();
+                        String responseBuscar = estoque.exibirProduto(idConsulta);
+                        System.out.println(responseBuscar);
+                        Geral.continuar();
+                        break;
+
+                    case "3":
+                        System.out.print("Digite o ID do produto que deseja remover: ");
+                        int idRemover = sc.nextInt();
+                        String responseRemover = estoque.removerEstoque(idRemover);
+                        System.out.println(responseRemover);
+                        Geral.continuar();
+                        break;
+
+                    case "4":
+                        String responseBuscarTodos = estoque.listarProdutos();
+                        System.out.println(responseBuscarTodos);
+                        Geral.continuar();
+                        break;
+
+                    case "5":
+                        int responseProdEstoque = estoque.qntProdutosEstoque();
+                        System.out.println("EXISTEM: " + responseProdEstoque + " EM ESTOQUE");
+                        Geral.continuar();
+                        break;
+
+                    case "6":
+                        double responseCapitalEstoque = estoque.capitalTotalEstoque();
+                        System.out.println("O VALOR DE PRODUTOS EM ESTOQUE É DE: R$"+ responseCapitalEstoque);
+                        Geral.continuar();
+                        break;
+                    
+                    case "7":
+                        String relatorio = estoque.relatorio();
+                        System.out.println(relatorio);    
+                        Geral.continuar();
+                        break;
+
+                    case "0":
+                            System.out.println("DESLIGANDO SISTEMA");
+                            sair = true;
+                        break;
+
+
+                    default:
+                        System.out.println("ERRO: OPÇÃO INVALIDA");
+                        break;
+                }
             }
-
+        } catch (Exception e) {
+            System.err.println("Algo deu errado: " + e.getMessage());
+        }finally{
+            sc.close();
         }
-        sc.close();
+        
     }
 
     public static String menu() {
@@ -77,7 +88,8 @@ public class Main {
         System.out.println("| 4 - Listar Produtos                    |");
         System.out.println("| 5 - Quantidade de produtos em estoque  |");
         System.out.println("| 6 - Capital em estoque                 |");
-        System.out.println("| 7 - Sair                               |");
+        System.out.println("| 7 - Relatorio geral                    |");
+        System.out.println("| 0 - Sair                               |");
         System.out.println("+========================================+");
 
     
