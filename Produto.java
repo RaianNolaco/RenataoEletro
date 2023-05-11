@@ -68,11 +68,14 @@ public class Produto {
         this.preco = novoValor;
     }
 
-    public void adicionarQtdProduto(int qntProdutos) {
+    public void adicionarQtdProduto(int qntProdutos)throws Exception {
         this.qtd += qntProdutos;
     }
 
-    public void removerQntProduto(int qntProdutos) {
+    public void removerQntProduto(int qntProdutos) throws Exception {
+        if(qntProdutos < this.qtd)
+          throw  new Exception("Quantidade de produtos não pode ser menor do que a quantidade em estoque");
+
         this.qtd -= qntProdutos;
     }
 

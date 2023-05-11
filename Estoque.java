@@ -80,4 +80,12 @@ public class Estoque {
     }
 
 
+    public String relatorio(){
+       String relatorio =""; 
+       relatorio += "Quantidade de produtos em estoque: " +qntProdutosEstoque() +"\n";
+       relatorio += "PRODUTOS: \n" +listarProdutos()+ "\n"; 
+       relatorio += "Capital acumulado de produtos: " + capitalTotalEstoque();
+        return relatorio;
+    }
+
 }
